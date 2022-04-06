@@ -65,6 +65,15 @@ module.exports = function (hash, moduleMap, options) {
         return null;
       }
 
+      if (options.liveReload) {
+        console.log('[HMR] Updated modules:');
+        updatedModules.forEach(function (moduleId) {
+          console.log('[HMR]  - ' + (moduleMap[moduleId] || moduleId));
+        });
+
+        reloadPage();
+      }
+
       var applyCallback = function (applyErr, renewedModules) {
         if (applyErr) return handleError(applyErr);
 
@@ -150,8 +159,15 @@ module.exports = function (hash, moduleMap, options) {
 
   function performReload() {
     if (reload) {
-      if (options.warn) console.warn('[HMR] Reloading page');
-      window.location.reload();
+      reloadPage();
     }
+  }
+
+  function reloadPage() {
+    if (options.warn) {
+      console.warn('[HMR] Reloading page');
+    }
+
+    window.location.reload();
   }
 };

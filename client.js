@@ -13,6 +13,7 @@ var options = {
   overlayStyles: {},
   overlayWarnings: false,
   ansiColors: {},
+  liveReload: false,
 };
 if (__resourceQuery) {
   var querystring = require('querystring');
@@ -69,6 +70,10 @@ function setOverrides(overrides) {
 
   if (overrides.overlayWarnings) {
     options.overlayWarnings = overrides.overlayWarnings == 'true';
+  }
+
+  if (overrides.liveReload) {
+    options.liveReload = overrides.liveReload === 'true';
   }
 }
 
