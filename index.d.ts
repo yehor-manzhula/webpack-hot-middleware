@@ -26,7 +26,7 @@ declare namespace WebpackHotMiddleware {
         timeout?: number | undefined;
         overlay?: boolean | undefined;
         noInfo?: boolean | undefined;
-        liverReload?: boolean | undefined;
+        liveReload?: boolean | undefined;
         quiet?: boolean | undefined;
         dynamicPublicPath?: boolean | undefined;
         autoConnect?: boolean | undefined;
